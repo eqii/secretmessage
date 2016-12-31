@@ -27,15 +27,15 @@ img = Image.open('3663c24c-c5db-11e6-8be5-e358d0e0215a.png')
 pixels = img.load()
 pixels_to_draw = []
 
-for x,y in itertools.product(range(img.size[0]), range(img.size[1])):   
+for px in itertools.product(range(img.size[0]), range(img.size[1])):   
 
-    current_color = pixels[x,y]
+    current_color = pixels[px]
 
     if current_color == START_UP or current_color == START_LEFT:
 
-        pixels_to_draw.append((x,y))
+        pixels_to_draw.append(px)
         current_direction = 'UP' if current_color == START_UP else 'LEFT'
-        next_px = get_next_pixel((x,y), current_direction)
+        next_px = get_next_pixel(px, current_direction)
 
         while True:
             pixels_to_draw.append(next_px)
